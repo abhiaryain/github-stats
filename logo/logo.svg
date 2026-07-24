@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3fb950"/>
+      <stop offset="100%" stop-color="#2ea043"/>
+    </linearGradient>
+    <linearGradient id="b" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#1f6feb"/>
+    </linearGradient>
+  </defs>
+  <rect x="50" y="90" width="24" height="60" rx="12" fill="url(#a)">
+    <animate attributeName="height" values="60;40;60" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="90;110;90" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="88" y="60" width="24" height="90" rx="12" fill="url(#b)" opacity=".9">
+    <animate attributeName="height" values="90;110;90" dur="4s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="y" values="60;40;60" dur="4s" repeatCount="indefinite" begin="0.5s"/>
+  </rect>
+  <rect x="126" y="30" width="24" height="120" rx="12" fill="url(#a)">
+    <animate attributeName="height" values="120;80;120" dur="4s" repeatCount="indefinite" begin="1s"/>
+    <animate attributeName="y" values="30;70;30" dur="4s" repeatCount="indefinite" begin="1s"/>
+  </rect>
+</svg>
