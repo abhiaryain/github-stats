@@ -1,7 +1,19 @@
 import { Elysia } from "elysia";
+import { env } from "@/config/env";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const health = {
+  success: true,
+  status: "Running",
+};
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+const app = new Elysia().get("/", () => health).get("/health", () => health);
+
+if (env.NODE_ENV === "development") {
+  app.listen(env.PORT, (server) => {
+    console.log(
+      `Server is running at http://${server?.hostname}:${server?.port}`,
+    );
+  });
+}
+
+export default app;
