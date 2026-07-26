@@ -1,6 +1,7 @@
 {
   "name": "github-stats",
   "version": "1.0.50",
+  "description": "Showcase your GitHub activity",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
