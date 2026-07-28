@@ -1,0 +1,60 @@
+name: Bug Report
+description: Report a bug to help us improve GitHub Stats.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - abhiaryain
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug!
+        Please provide as much detail as possible to help us investigate and fix the issue quickly.
+
+        > ⚠️ **Security notice:**
+        > If this issue involves a security vulnerability, please **do not** report it here.
+        > Instead, follow our [Security Policy](https://github.com/abhiaryain/github-stats/blob/main/.github/SECURITY.md).
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the issue.
+      placeholder: When I try to ..., the application ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please provide relevant environment details.
+      placeholder: |
+        - OS:
+        - Bun / Node version:
+        - Browser (if applicable):
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Logs
+      description: If applicable, add screenshots, logs, or a short screencast to help explain the problem.
+      placeholder: Drag and drop files here...
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        By submitting this bug report, you agree to follow our
+        [Code of Conduct](https://github.com/abhiaryain/github-stats/blob/main/.github/CODE_OF_CONDUCT.md).

@@ -1,6 +1,7 @@
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
-import { GITHUB_USERNAME_REGEX } from "@/constants/constants";
+
+const GITHUB_USERNAME_REGEX = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
 
 export const env = createEnv({
   server: {
@@ -15,6 +16,8 @@ export const env = createEnv({
       .toLowerCase()
       .min(1)
       .regex(GITHUB_USERNAME_REGEX, { error: "Invalid Github username" }),
+    CACHE_DURATION: z.coerce.number().min(1).max(86400).default(60), // 1 minute to 1 day
+    ERROR_CACHE_DURATION: z.coerce.number().min(1).max(86400).default(60), // 1 minute to 1 day
   },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,
