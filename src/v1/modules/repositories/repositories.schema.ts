@@ -7,7 +7,10 @@ import { CACHE_TTL } from "@/utils/cache";
 import { z } from "zod";
 
 export const RepositorySchema = {
-  params: z.object({ username: usernameSchema }),
+  params: z.object({
+    username: usernameSchema,
+    repository: z.string().trim().min(1),
+  }),
   query: z.object({
     theme: themeSchema,
     locale: localeSchema,
@@ -18,3 +21,8 @@ export const RepositorySchema = {
       .default(CACHE_TTL.REPOSITORY.DEFAULT),
   }),
 };
+
+
+export type RepositoryParams = z.infer<(typeof RepositorySchema)["params"]>;
+
+export type RepositoryQuery = z.infer<(typeof RepositorySchema)["query"]>;

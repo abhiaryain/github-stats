@@ -1,0 +1,1 @@
+export const renderLanguages = (languages: Languages, query: LanguageQuery) => {}

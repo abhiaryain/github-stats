@@ -5,13 +5,15 @@ import { OverviewSchema } from "./overview.schema";
 import { isWhitelisted } from "@/constants/usernames";
 import { renderError } from "@/view/error.view";
 import { t } from "@/constants/localization";
+import { renderOverview } from "./overview.view";
 
 export const overview = new Elysia({
   prefix: "/overview",
 }).get(
   "/:username?",
   ({ params: { username = env.GITHUB_USERNAME } }) => {
-    return getOverview(username);
+    const overview = getOverview(params, query);
+    return renderOverview(overview, query);
   },
   {
     params: OverviewSchema.params,

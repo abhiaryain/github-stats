@@ -1,0 +1,1 @@
+export const renderGist = (gist: Gist, query: GistQuery) => {}

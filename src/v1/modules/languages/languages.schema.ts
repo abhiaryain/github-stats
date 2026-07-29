@@ -22,3 +22,7 @@ export const LanguageSchema = {
       .default(CACHE_TTL.LANGUAGE.DEFAULT),
   }),
 };
+
+export type LanguageParams = z.infer<(typeof LanguageSchema)["params"]>;
+
+export type LanguageQuery = z.infer<(typeof LanguageSchema)["query"]>;

@@ -1,0 +1,1 @@
+export const renderWakatime = (wakatime: Wakatime, query: WakatimeQuery) => {}

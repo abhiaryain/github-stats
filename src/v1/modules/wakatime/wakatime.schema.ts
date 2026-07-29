@@ -18,3 +18,7 @@ export const WakatimeSchema = {
       .default(CACHE_TTL.WAKATIME.DEFAULT),
   }),
 };
+
+export type WakatimeParams = z.infer<(typeof WakatimeSchema)["params"]>;
+
+export type WakatimeQuery = z.infer<(typeof WakatimeSchema)["query"]>;

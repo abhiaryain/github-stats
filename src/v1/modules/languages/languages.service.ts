@@ -1,6 +1,12 @@
 import { octokit } from "@/config/octokit";
-
-export const getLanguages = async (username: string) => {
+import {
+  LanguageParams,
+  LanguageQuery,
+} from "@v1/modules/languages/languages.schema";
+export const getLanguages = async (
+  params: LanguageParams,
+  query: LanguageQuery,
+) => {
   const data = await octokit.graphql.paginate(
     `
       query userInfo($login: String!, $cursor: String) {

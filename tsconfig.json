@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/bun/tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "preserve",
@@ -11,7 +12,12 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }

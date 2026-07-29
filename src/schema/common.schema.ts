@@ -21,3 +21,9 @@ export const hideSchema = z
     case: "sensitive",
   })
   .default(false);
+
+export const colorSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .regex(/^#[0-9a-f]{6}$/i);

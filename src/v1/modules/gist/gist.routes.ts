@@ -4,16 +4,16 @@ import { GistSchema } from "@v1/modules/gist/gist.schema";
 import { isWhitelisted } from "@v1/modules/gist/gist.constants";
 import { renderError } from "@/view/error.view";
 import { t } from "@/constants/localization";
+import { getGist } from "./gist.service";
+import { renderGist } from "./gist.view";
 
 export const gist = new Elysia({
   prefix: "/gist",
 }).get(
   "/:gist_id",
-  async ({ params: { gist_id } }) => {
-    console.log(gist_id);
-
-    // const gist = await getGist(gist_id);
-    // return renderGist(gist);
+  async ({ params, query }) => {
+    const gist = await getGist(params, query);
+    return renderGist(gist, query);
   },
   {
     params: GistSchema.params,

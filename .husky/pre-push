@@ -1,2 +1,39 @@
-# bun run test
-# bun run build
+#!/usr/bin/env bash
+
+set -e
+
+RED='\e[0;31m'
+GREEN='\e[0;32m'
+YELLOW='\e[0;33m'
+BLUE='\e[0;34m'
+NC='\e[0m'
+
+# This check helps ensure users don't accidentally push changes that work
+# locally but would fail in CI.
+bun run test
+echo "${GREEN}✅ Test completed.${NC}"
+echo "${YELLOW}⚠️ Warning: Passing this check does guarantee that the build will succeed in CI.${NC}"
+
+count=$(git status --porcelain | wc -l | tr -d ' ')
+if [ "$count" -gt 0 ]; then
+    if [ "$count" -eq 1 ]; then
+        echo "${RED}Push blocked: 1 file is modified, staged, untracked, or deleted.${NC}"
+    else
+        echo "${RED}Push blocked: $count files are modified, staged, untracked, or deleted.${NC}"
+    fi
+    echo "${YELLOW}This check helps catch issues before pushing by verifying that your changes build successfully locally, reducing the risk of CI failures.${NC}"
+    echo "${YELLOW}Please stash or commit your changes before you can push.${NC}"
+    echo "  ${BLUE}(use 'git add .' to stage changes)${NC}"
+    echo "  ${BLUE}(use 'git commit -m \"<message>\"' to commit changes)${NC}"
+    echo "  ${BLUE}(use 'git stash' to stash changes)${NC}"
+    echo "  ${BLUE}(use 'git status' to list changed files)${NC}"
+    echo ""
+    exit 1
+fi
+
+bun run build
+
+echo "${GREEN}✅ Build completed.${NC}"
+echo "${YELLOW}⚠️ Warning: Passing this check does guarantee that the build will succeed in CI.${NC}"
+
+exit 0

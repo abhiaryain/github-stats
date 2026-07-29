@@ -5,15 +5,17 @@ import { LanguageSchema } from "@v1/modules/languages/languages.schema";
 import { isWhitelisted } from "@/constants/usernames";
 import { renderError } from "@/view/error.view";
 import { t } from "@/constants/localization";
+import { renderLanguages } from "./languages.view";
 
 export const languages = new Elysia({
   prefix: "/languages",
 }).get(
   "/:username?",
-  ({ params: { username = env.GITHUB_USERNAME }, query }) => {
-    console.log(query);
-
-    return getLanguages(username);
+  async ({ params, query }) => {
+    params.username = params.username || env.GITHUB_USERNAME;
+    query.theme = query.theme || env.THEME;
+    const languages = await getLanguages(params, query);
+    return renderLanguages(languages, query);
   },
   {
     params: LanguageSchema.params,

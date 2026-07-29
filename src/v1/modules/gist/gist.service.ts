@@ -1,4 +1,5 @@
 import { octokit } from "@/config/octokit";
+import { GistParams, GistQuery } from "@v1/modules/gist/gist.schema";
 
 const GIST_QUERY = `
 query gistInfo($gistName: String!) {
@@ -24,7 +25,7 @@ query gistInfo($gistName: String!) {
 }
 `;
 
-export const getGist = async (gist_id: string) => {
+export const getGist = async (params: GistParams, query: GistQuery) => {
   const { data } = await octokit.graphql(GIST_QUERY, {
     gistName: gist_id,
   });

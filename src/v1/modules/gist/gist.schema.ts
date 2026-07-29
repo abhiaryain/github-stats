@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { hideSchema, themeSchema } from "@/schema/common.schema";
+import { colorSchema, hideSchema, localeSchema, themeSchema } from "@/schema/common.schema";
 import { CACHE_TTL } from "@/utils/cache";
 
 export const GistSchema = {
@@ -7,10 +7,16 @@ export const GistSchema = {
     gist_id: z.string().min(1),
   }),
   query: z.object({
-    hide_border: hideSchema,
+    title_color: colorSchema,
+    icon_color: colorSchema,
+    text_color: colorSchema,
+    bg_color: colorSchema,
+    border_color: colorSchema,
     border_radius: z.number().min(0).max(100).default(0),
+    hide_border: hideSchema,
     theme: themeSchema,
     hide_owner: hideSchema,
+    locale: localeSchema,
     cache_ttl: z
       .number()
       .min(CACHE_TTL.GIST.MIN)

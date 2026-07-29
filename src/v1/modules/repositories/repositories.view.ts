@@ -1,0 +1,1 @@
+export const renderRepositories = (repositories: Repository, query: RepositoryQuery) => {}
